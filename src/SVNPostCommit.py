@@ -107,9 +107,13 @@ if __name__ == "__main__":
     repository = sys.argv[1]
     rev = sys.argv[2]
     configFile = sys.argv[3]
+    sys.stdout.write( " repos :: {0} , rev :: {1} , config :: {2}".format( repository, rev, configFile ) )
     loadConfigFile( configFile )
+    sys.stdout.write( "Fetching Message Content " )
     msgContent = getSVNCommitDiffInformation( repository, rev )
+    sys.stdout.write( "Fetching Diff Information " )
     msgSubject = getSVNCommitInformation( repository , rev )
+    sys.stdout.write( "Fetching Commit Information " )
     processEmailContent( config, msgSubject, msgContent )
-
+    sys.stdout.write( "Sending Email... " )
 
