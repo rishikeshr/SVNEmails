@@ -1,0 +1,18 @@
+This project deals with sending post commit notifications to the required subscribers.
+
+The script requires configuration information as below. This could be setup in a seperate .cfg file.
+
+------------
+
+[SERVERCONFIG]
+SMTPSERVER:smtp.gmail.com
+SMTPSERVERPORT:587
+
+
+[SVNEMAILUSERCONFIG]
+SVNUSER:emailid
+SVNUSERPWD:emailpasswd
+
+[MAILERLIST]
+TOLIST:test@test.com,who@who.com
+FROMID:SVN Mail Agent
