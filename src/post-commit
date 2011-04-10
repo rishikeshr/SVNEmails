@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# The config file and the notification config files are as per the following paths.
+# These can be configured as per your svn settings.
+
 REPOS="$1"
 REV="$2"
 
