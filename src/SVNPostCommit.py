@@ -79,17 +79,17 @@ def sendPostCommitEmail( configObj, toaddrs, fromaddr, subject, message ):
     emailserver.quit();
 
 
-def getSVNCommitInformation( repositoryPath, txnVersion ):
-    svnlookString = '/usr/bin/svnlook author -t {0} {1}'.format( txnVersion, repositoryPath )
+def getSVNCommitInformation( repositoryPath, revVersion ):
+    svnlookString = '/usr/bin/svnlook author -r {0} {1}'.format( revVersion, repositoryPath )
     commitAuthorName = command_output( svnlookString )
-    svnlookString = '/usr/bin/svnlook date -t {0} {1}'.format( txnVersion, repositoryPath )
+    svnlookString = '/usr/bin/svnlook date -r {0} {1}'.format( revVersion, repositoryPath )
     commitDate = command_output( svnlookString )
     informationString = 'Code Committed to {0} by {1} on {2}'.format( repositoryPath, commitAuthorName, commitDate )
     return informationString
 
 
-def getSVNCommitDiffInformation( repositoryPath, txnVersion ):
-    svnlookString = '/usr/bin/svnlook diff -t {0} {1}'.format( txnVersion, repositoryPath )
+def getSVNCommitDiffInformation( repositoryPath, revVersion ):
+    svnlookString = '/usr/bin/svnlook diff -r {0} {1}'.format( revVersion, repositoryPath )
     commitDiff = command_output( svnlookString )
     return commitDiff
 
@@ -105,11 +105,11 @@ def processEmailContent( configObj, subject, content ):
 if __name__ == "__main__":
     import sys
     repository = sys.argv[1]
-    txn = sys.argv[2]
+    rev = sys.argv[2]
     configFile = sys.argv[3]
     loadConfigFile( configFile )
-    msgContent = getSVNCommitDiffInformation( repository, txn )
-    msgSubject = getSVNCommitInformation( repository , txn )
+    msgContent = getSVNCommitDiffInformation( repository, rev )
+    msgSubject = getSVNCommitInformation( repository , rev )
     processEmailContent( config, msgSubject, msgContent )
 
 
