@@ -2,6 +2,8 @@ This project deals with sending post commit notifications to the required subscr
 
 The script requires configuration information as below. This could be setup in a seperate .cfg file.
 
+Note: The SVNUSER is the email id for the user. so for someone with an email id of james.bond@gmail.com the SVNUSER should hold the exact
+name. i.e., SVNUSER:james.bond@gmail.com
 ------------
 
 [SERVERCONFIG]
