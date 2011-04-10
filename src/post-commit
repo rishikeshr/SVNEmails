@@ -1,0 +1,10 @@
+#!/bin/sh
+
+REPOS="$1"
+REV="$2"
+
+CONFIGFILE="/opt/svn/svn-controls/svn_notification.cfg"
+
+/opt/svn/svn-controls/SVNPostCommit.py "$REPOS" $REV $CONFIGFILE
+
+exit $?
